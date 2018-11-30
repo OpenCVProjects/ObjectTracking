@@ -41,7 +41,6 @@ while video.isOpened():
             status = 1
             (x, y, w, h) = cv2.boundingRect(contour)
             cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 3)
-            # sentido.append(x)
 
             print("Sentido", sentido)
             print("Y", y)
@@ -66,13 +65,9 @@ while video.isOpened():
                     entra = True
                     sentido = 0
 
-            # print("X", x)
-            # print("Y", y)
-
-        # print("sentido Final", sentido)
         print ("Contador", contador)
 
-        time.sleep(1/10)
+        time.sleep(1)
         cv2.imshow("Frame", frame)
 
         cv2.imshow("Thresh Delta", thresh_frame)
@@ -80,8 +75,6 @@ while video.isOpened():
         key = cv2.waitKey(1)
         if key == ord('q'):
             break
-
-        # print status
 
 video.release()
 cv2.destroyAllWindows
