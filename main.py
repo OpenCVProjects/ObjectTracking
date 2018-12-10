@@ -8,4 +8,5 @@ if __name__ == "__main__":
     ui = MainWindow.Ui_MainWindow()
     ui.setupUi(MainWindow2)
     MainWindow2.show()
+    MainWindow.cambiarLCD(4)
     sys.exit(app.exec_())

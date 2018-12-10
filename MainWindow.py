@@ -6,7 +6,10 @@
 #
 # WARNING! All changes made in this file will be lost!
 
+import os
 from PyQt4 import QtCore, QtGui
+from PyQt4.QtGui import *
+import PeopleCounter
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -21,6 +24,7 @@ try:
 except AttributeError:
     def _translate(context, text, disambig):
         return QtGui.QApplication.translate(context, text, disambig)
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -57,22 +61,23 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.pushButton.setText(_translate("MainWindow", "Start", None))
         self.label.setText(_translate("MainWindow", "Personas dentro", None))
 
     def clickMethod(self):
-        # QMessageBox.about(self, "Title", "Message")
-        self.lcdNumber.display(1)
+        self.lcdNumber.display(4)
+        PeopleCounter.counterPeople(self)
         print("BOTON PULSADO")
 
 
-# if __name__ == "__main__":
-#     import sys
-#     app = QtGui.QApplication(sys.argv)
-#     MainWindow = QtGui.QMainWindow()
-#     ui = Ui_MainWindow()
-#     ui.setupUi(MainWindow)
-#     MainWindow.show()
-#     sys.exit(app.exec_())
+if __name__ == "__main__":
+    import sys
+    app = QtGui.QApplication(sys.argv)
+    MainWindow = QtGui.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())

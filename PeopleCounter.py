@@ -9,6 +9,7 @@ def controlBoard():
     cv2.namedWindow("Control Window")
     cv2.createTrackbar("Threshold Min", "Control Window", 30, 255, nothing)
     cv2.createTrackbar("Threshold Max", "Control Window", 255, 255, nothing)
+    cv2.moveWindow("Control Window", 270, 150)
 
 #Prepare a frame to work with it
 def preparareFrame(first_frame, gray):
@@ -29,7 +30,7 @@ def getRoute(route):
         pos = i
     return goIn
 
-def counterPeople():
+def counterPeople(self):
 
     #Saves the first frame
     first_frame = None
@@ -73,8 +74,6 @@ def counterPeople():
             thresh_frame = preparareFrame(first_frame, gray)
 
             (_,cnts,_) = cv2.findContours(thresh_frame.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
-            img = cv2.line(frame,(0,210),(200,210),(0,255,0),4)
 
             for contour in cnts:
                 if cv2.contourArea(contour) < 10100:
@@ -124,14 +123,19 @@ def counterPeople():
 
 
             print ("Contador", counter)
+            self.lcdNumber.display(counter)
             f.write("*-*-*-*--*-*-*-*-*-*-*- CONTADOR *-*-*-*--*-*-*-*-*-*-*-")
             f.write("\n")
             f.write(str(counter))
             f.write("\n")
 
+            time.sleep(0.5)
+
             cv2.imshow("Frame", frame)
+            cv2.moveWindow("Frame", 270, 350)
 
             cv2.imshow("Thresh Delta", thresh_frame)
+            cv2.moveWindow("Thresh Delta", 700, 350)
 
             key = cv2.waitKey(1)
             if key == ord('q'):
