@@ -10,6 +10,7 @@ import os
 from PyQt4 import QtCore, QtGui
 from PyQt4.QtGui import *
 import PeopleCounter
+import CarCounter
 
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
@@ -69,7 +70,8 @@ class Ui_MainWindow(object):
 
     def clickMethod(self):
         self.lcdNumber.display(4)
-        PeopleCounter.counterPeople(self)
+        # PeopleCounter.counterPeople(self)
+        CarCounter.counterPeople(self)
 
 
 if __name__ == "__main__":
